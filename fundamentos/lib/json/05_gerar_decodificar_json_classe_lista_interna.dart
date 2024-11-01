@@ -45,10 +45,10 @@ void main(List<String> args) {
                           "emails": ["alice@gmail.com", "alice@hotmail.com"]}''';
 
   // Converter a string JSON em um mapa
-  Map<String, dynamic> UsuarioJson = jsonDecode(jsonString);
+  Map<String, dynamic> usuarioJson = jsonDecode(jsonString);
 
   // Criar um objeto Usuário a partir do mapa
-  Usuario usuario = Usuario.deJson(UsuarioJson);
+  Usuario usuario = Usuario.deJson(usuarioJson);
 
   // Exibir os detalhes do usuário
   print('''${usuario.nome},
@@ -56,6 +56,14 @@ void main(List<String> args) {
           Estudante: ${usuario.eEstudante}''');
   print('Telefone: ${usuario.telefones.join(', ')}');
   print('E-mail: ${usuario.emails.join(', ')}');
+
+  // Exibir os detalhes do usuÃ¡rio
+  // print('''${usuario.nome},
+  //          Idade: ${usuario.idade},
+  //          Estudante: ${usuario.eEstudante},
+  //          Telefone: ${usuario.telefones.join(', ')},
+  //          E-mail: ${usuario.emails.join(', ')}
+  //       ''');
 
   // Converter o objeto Usuario de volta para JSON
   String jsonSaida = jsonEncode(usuario.paraJson());
