@@ -5,7 +5,7 @@ void main(List<String> args) {
   print('- Outro para definir o valor');
 
   final mapaDePacientes = <String, String>{
-    'nome': 'Fulano de Tal',
+    'nome': 'Fulano de Tal', 
     'Funcao': 'Desenvolvedor'
   };
 
@@ -20,34 +20,40 @@ void main(List<String> args) {
     'funcao': null
   };
 
-  print('\n // Declaração por inferência');
+  print('\n// Declaração por inferêcia');
   var mapaDePacientesNaoPermiteNulosInferencia = <String, String>{};
-  var mapaDePacientesPermiChavesNulosInferencia = <String?, String>{
+  var mapaDePacientesPermiteChavesNulosInferencia = <String?, String>{
     null: 'Fulano de Tal',
     null: 'Desenvolvedor'
   };
-  print('\n // Declaração por inferência');
   var mapaDePacientesPermiteValoresNulosInferencia = <String, String?>{
     'nome': null,
     'funcao': null
   };
-  print(''' // Declaração de um mapa com lista dentro dele,
-       igual a uma estrutura JSON''');
+  print('''// Declaração de um mapa com uma lista dentro dele, 
+           igual a uma estrutura de JSON''');
   var mapaAninhado = <String, Object>{
     'nome': "Escola de DART",
-    'cursos': [
-      {'nome': 'DART', 'descricao': 'Fundamentos de linguagem Dart'},
-      {'nome': 'Flutter', 'descricao': 'Fundamentos da linguagem Flutter'}
+    'cursos':[
+      {
+        'nome': 'DART',
+        'descricao': 'Fundamentos da linguagem DART'
+      },
+      {
+        'nome': 'Flutter',
+        'descricao': 'Fundamentos da linguagem Flutter'
+      }
     ]
   };
 
   // Imprimindo o mapa de forma legível
   print(mapaAninhado);
 
-  // Para uma saída mais formatada, podemos iterar  sobre os cursos'
+  // Para uma saída mais formatada, podemos iterar sobre os cursos
   print('Escola: ${mapaAninhado['nome']}');
   print('Cursos:');
   for (var curso in mapaAninhado['cursos'] as List) {
     print('- ${curso['nome']}: ${curso['descricao']}');
   }
+
 }

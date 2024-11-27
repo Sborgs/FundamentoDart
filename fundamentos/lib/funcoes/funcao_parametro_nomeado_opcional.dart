@@ -1,36 +1,37 @@
+// Função com parâmetros nomeados
 import 'dart:io';
 
-// Função com parâmetros nomeados
 // Chave determina que o parametro é opcional e nomeado
-
-void exibirMensagem(
-    {String nome = "Visitante", String mensagem = "Bem-vindo"}) {
+void exibirMensagem({String nome = "Visitante", String mensagem = "Bem-vindo"}) {
   print("$mensagem, $nome.");
 }
 
-void exibirMensagemPosicional(
-    [String? nome = "Visitante", String mensagem = "Bem-vindo"]) {
+void exibirMensagemPocional([String? nome, String mensagem = "Bem-vindo"]) {
   print("$mensagem, ${nome ??= "Visitante"}.");
 }
 
 void main(List<String> args) {
-  print("Digite o nome do Visitante: ");
+
+  print("Digite o nome do Visitante");
   var visitante = stdin.readLineSync();
 
-  print("Digite a mensagem: ");
+  print("Digite a mensagem");
   var mensagem = stdin.readLineSync();
 
-  if (visitante != "" && mensagem != "") {
-    exibirMensagem(nome: visitante.toString(), mensagem: mensagem!);
-    exibirMensagemPosicional(visitante.toString(), mensagem);
-  } else if (visitante == "" && mensagem == "") {
+  if( visitante != "" && mensagem != "" ){    
+    exibirMensagem( mensagem: mensagem!, nome: visitante.toString() );
+    exibirMensagemPocional(visitante!, mensagem);
+  }else if( visitante == "" && mensagem == ""){
     exibirMensagem();
-    exibirMensagemPosicional();
-  } else if (visitante != "") {
+    exibirMensagemPocional();
+
+  }else if( visitante != ""){
     exibirMensagem(nome: visitante!);
-    exibirMensagemPosicional("", mensagem.toString());
-  } else if (mensagem != null && mensagem != "") {
+    exibirMensagemPocional(visitante!);
+
+  }else if( mensagem != null && mensagem != ""){
     exibirMensagem(mensagem: mensagem);
-    exibirMensagemPosicional(null, mensagem);
+    exibirMensagemPocional(null,mensagem);
+
   }
 }

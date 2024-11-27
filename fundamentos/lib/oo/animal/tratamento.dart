@@ -1,9 +1,7 @@
-// Dependência
-
-import 'animal.dart';
+//Dependência
 
 class Tratamento {
   String descricao;
 
-  Tratamento(this.descricao);
+  Tratamento(this.descricao);  
 }

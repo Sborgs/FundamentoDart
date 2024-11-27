@@ -25,7 +25,7 @@ class Usuario {
     };
   }
 
-  // Método para criar um objeto Usuario a partir de um Map
+  // Método para criar um objeto Usuario a partir de um mapa
   factory Usuario.deJson(Map<String, dynamic> json) {
     return Usuario(
         nome: json['nome'],
@@ -36,49 +36,48 @@ class Usuario {
   }
 }
 
-void main(List<String> args) {
+void main() {
   // String JSON com um único usuário
   String jsonString = '''[
-                          {"nome":"Alice",
+                         {"nome":"Alice",
                           "idade":30,
                           "eEstudante":false,
-                          "telefones": ["1234-5678", "9876-5432"],
+                          "telefones": ["1234-5678","9876-5432"],
                           "emails": ["alice@gmail.com", "alice@hotmail.com"]
                           },
-                          {"nome": "Bob",
-                          "idade": 25,
-                          "eEstudante": true,
+                         {"nome":"Bob",
+                          "idade":25,
+                          "eEstudante":true,
                           "telefones": ["2345-6789"],
-                          "emails": ["bob@gmai.com"]
+                          "emails": ["bob@gmail.com"]
                           },
-                          {"nome": "Carol",
+                         {"nome":"Carol",
                           "idade":29,
-                          "eEstudante": false,
-                          "telefones": ["3456-7890", "3155-5698"],
+                          "eEstudante":false,
+                          "telefones": ["3456-7890","3155-5698"],
                           "emails": ["carol@hotmail.com"]
-                          }
+                          }                          
                           ]''';
 
   // Converter a string JSON em uma Lista de mapas
   List<dynamic> usuariosJson = jsonDecode(jsonString);
 
-  // Criar uma lista de objetos Usuário a partir da Lista de  mapas
+  // Criar uma lista de objetos Usuario a partir da Lista de Mapas
   List<Usuario> usuarios =
       usuariosJson.map((usuarioJson) => Usuario.deJson(usuarioJson)).toList();
 
   for (var usuario in usuarios) {
     // Exibir os detalhes do usuário
     print('''
-        Nome: ${usuario.nome},
-        Idade: ${usuario.idade},
-        Estudante: ${usuario.eEstudante}
-        Telefone: ${usuario.telefones.join(',')}
-        E-mail: ${usuario.emails.join('.')}
-        ''');
+           Nome: ${usuario.nome}, 
+           Idade: ${usuario.idade}, 
+           Estudante: ${usuario.eEstudante}
+           Telefone: ${usuario.telefones.join(', ')}
+           E-mail: ${usuario.emails.join(', ')}
+          ''');
   }
 
-  // Converter a Lista  de objeto Usuario de volta para JSON
-  String jsonSaida =
-      jsonEncode(usuarios.map((usuario) => usuario.paraJson()).toList());
+  // Converter a Lista de objeto Usuario de volta para JSON
+  String jsonSaida = jsonEncode( usuarios.map((usuario) => usuario.paraJson()).toList());
   print(jsonSaida);
 }

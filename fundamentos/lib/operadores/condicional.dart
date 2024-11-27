@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:io';
 
 void main() {
@@ -6,14 +5,13 @@ void main() {
 
   print("Informe a sua idade: ");
   final idade = stdin.readLineSync();
-
   /*
-  = -> Atribuição
+  = -> atribuição
   == -> Comparação
-  < -> Menor Queue
-  > -> Maior Queue
+  < -> Menor que
+  > => Maior que
   <= -> Menor ou igual a
-  >= -> Maior ou igual a 
+  >= => Maior ou igual a
   != -> Diferente
   += -> soma e atribui
   -= -> subtrai e atribui
@@ -22,25 +20,27 @@ void main() {
   ++ -> incrementa 1
   -- -> decrementa 1
   */
-
   if (idade != null) {
     final idadeConvertido = int.tryParse(idade);
 
+
     if (idadeConvertido != null && idadeConvertido < limiteIdade) {
       print("Não pode votar");
-    } else if (idadeConvertido == limiteIdade) {
+    }else if(idadeConvertido == limiteIdade){
       print("Primeiro ano de votação!");
-    } else {
+    }else{
       print("Pode votar");
     }
-    // (teste lógico) ? Valor Se Verdadeiro : Valor Se Falso;
-    final podeVotar =
-        (idadeConvertido != null) ? idadeConvertido >= limiteIdade : false;
 
-    if (podeVotar) {
+    // Operador ternário    
+    // (teste lógico)?Valor Se Verdadeiro:Valor Se Falso;
+    final podeVotar = (idadeConvertido != null) ? idadeConvertido >= limiteIdade : false;
+    
+    if(podeVotar){
       print("Pode votar");
-    } else {
+    }else{
       print("Não pode votar");
     }
-  } // Fim do if (idade != null)
+
+  }// Fim do if (idade != null)
 }

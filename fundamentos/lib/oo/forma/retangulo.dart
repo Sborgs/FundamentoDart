@@ -1,14 +1,15 @@
 import 'Forma.dart';
 import 'enum.dart';
 
-class Retangulo extends Forma {
-  double comprimento = 10;
-  double largura = 5.5;
+class Retangulo extends Forma{
+  double comprimento = 0;
+  double largura = 0;
 
-  Retangulo(this.comprimento, this.largura) : super(tpForma.Retangulo);
-
+  Retangulo( this.comprimento, this.largura ) : super(tpForma.Retangulo);
+ 
   @override
-  double calculaArea() {
+  double calculaArea(){
     return comprimento * largura;
   }
+ 
 }

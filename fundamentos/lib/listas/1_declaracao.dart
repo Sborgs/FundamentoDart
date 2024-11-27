@@ -1,17 +1,18 @@
-void main() {
+void main(List<String> args) {
+
   // Declaração e inicialização de uma lista de inteiros
   // Tipos Genéricos
-  List<int> listaNumeros = [1, 2, 3];
+  List<int> listaNumeros = [1,2,3];
 
-  List<String> listaTextos = ['Fulano', 'Beltrano', 'Sicrano'];
+  List<String> listaTextos = ['Fulano','Beltrano','Sicrano'];
 
   // Declaração por inferência e atribuição
-  var listaNumerosInferencia = [1, 2, 3];
+  var listaNumerosInferencia = [1,2,3];
 
-  var listaTextosInferencia = ['Fulano', 'Beltrano', 'Sicrano'];
+  var listaTextosInferencia = ['Fulano','Beltrano','Sicrano'];
 
-  // Declaração de lista vazia
-
+  //declaração de lista vazia
+  
   List<int> listaSemDadosGenerico = [];
 
   var listaSemDadosInferencia = [];
@@ -19,4 +20,5 @@ void main() {
   var listaSemDadosInferenciaGenerico = <int>[];
 
   var listaSemDadosInferenciaGenericoString = <String>[];
+
 }

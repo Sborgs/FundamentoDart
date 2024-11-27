@@ -19,18 +19,18 @@ class Cachorro extends Animal {
       fofura += 10;
       print('A fofura de $nome aumentou para $fofura');
       print('$nome está brincando com o brinquedo: ${brinquedo.nome}');
-    } else {
+    }else{
       print('O brinquedo ${brinquedo.nome} não pertence ao $nome');
     }
   }
 
-  @override
+  @override //obrigatório
   void fazerSom() {
-    print('$nome fez miau');
+    print('$nome fez auau');
   }
 
   @override
   String toString() {
-    return 'Cachorro | Nome: $nome; Peso: $peso; Fofura: $fofura; Especie: ${especie.name}';
+    return 'Cachorro | Nome: $nome; Peso: $peso; Fofura: $fofura; Espécie: ${especie.name}';
   }
 }

@@ -1,15 +1,14 @@
 import 'dart:convert';
+void main() {
 
-void main(List<String> args) {
   // Criar um mapa (objeto)
-
   Map<String, dynamic> usuario = {
     'nome': 'Alice',
     'idade': 30,
     'eEstudante': false
   };
 
-  // Converter o mapa en JSON
+  // Converter o mapa em JSON
   String jsonString = jsonEncode(usuario);
-  print(jsonString);
+  print(jsonString); 
 }

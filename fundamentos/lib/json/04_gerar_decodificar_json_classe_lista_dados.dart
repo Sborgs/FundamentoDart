@@ -16,7 +16,7 @@ class Usuario {
     };
   }
 
-  // Método para criar um objeto Usuario a partir de um Map
+  // Método para criar um objeto Usuario a partir de um mapa
   factory Usuario.deJson(Map<String, dynamic> json) {
     return Usuario(
       nome: json['nome'],
@@ -26,32 +26,35 @@ class Usuario {
   }
 }
 
-void main(List<String> args) {
-  // String JSON com um vários usuário
+void main() {
+  // String JSON com vários usuários
   String jsonString = '''
-[
-  {"nome":"Alice", "idade":30, "eEstudante":false},
-  {"nome":"Bob", "idade":25, "eEstudante":true},
-  {"nome":"Charlie", "idade":28, "eEstudante":false}
-]
-''';
+  [
+    {"nome":"Alice","idade":30,"eEstudante":false},
+    {"nome":"Bob","idade":25,"eEstudante":true},
+    {"nome":"Charlie","idade":28,"eEstudante":false}
+  ]
+  ''';
 
   // Converter a string JSON em uma lista de mapas
   List<dynamic> usuariosJson = jsonDecode(jsonString);
 
-  // Criar a lista de objetos Usuário a partir da lista do mapas
+  // Criar a lista de objetos Usuario a partir da lista do mapas
   List<Usuario> usuarios =
-      usuariosJson.map((usuariosJson) => Usuario.deJson(usuariosJson)).toList();
+      usuariosJson.map((usuarioJson) => 
+        Usuario.deJson(usuarioJson)).toList();
 
-  // Exibir os detalhes do usuário
+  // Exibir os detalhes do usuário  
   for (var usuario in usuarios) {
-    print('''${usuario.nome},
-          Idade: ${usuario.idade},
-          Estudante: ${usuario.eEstudante ? "Sim" : "Não"}''');
+    print('''${usuario.nome}, 
+           Idade: ${usuario.idade}, 
+           Estudante: ${usuario.eEstudante?"Sim":"Não"}''');
   }
 
   // Converter o objeto Usuario de volta para JSON
-  String jsonSaida =
-      jsonEncode(usuarios.map((usuario) => usuario.paraJson()).toList());
+  String jsonSaida = jsonEncode( 
+                          usuarios.map( (usuario) 
+                            => usuario.paraJson()).toList()
+                     );
   print(jsonSaida);
 }
