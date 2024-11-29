@@ -17,22 +17,28 @@ class Usuario {
 }
 
 class DatabaseHelper {
-  static late sqlite3.Database db;
+  static late Database db;
 
   // Conectar ao banco de dados SQLite no arquivo específico
   static void conectar() {
-    db = sqlite3.open(r'C:\Projetos\SQLite\escola.db'); // Caminho absoluto do banco de dados
+    db = sqlite3.open(
+        r'C:\Projetos\SQLite\escola.db'); // Caminho absoluto do banco de dados
     // Caso o banco não exista, ele será criado automaticamente
     db.execute(
       'CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, idade INTEGER)',
+    );
+    db.execute(
+      'DELETE FROM usuarios',
     );
   }
 
   // Inserir um novo usuário
   static void inserirUsuario(Usuario usuario) {
     db.execute(
-      'INSERT INTO usuarios (nome, idade) VALUES (?, ?)',
-      [usuario.nome, usuario.idade],
+      // 'INSERT INTO usuarios (nome, idade) VALUES (?, ?)',
+      // [usuario.nome, usuario.idade],
+      // Pesquise sobre SQL  Injection
+      "INSERT INTO usuarios (nome, idade) VALUES ('${usuario.nome}', ${usuario.idade})",
     );
   }
 
@@ -79,7 +85,7 @@ void main() {
   // Adicionar usuários
   var usuario1 = Usuario(nome: 'Carlos', idade: 30);
   var usuario2 = Usuario(nome: 'Ana', idade: 25);
-  
+
   DatabaseHelper.inserirUsuario(usuario1);
   DatabaseHelper.inserirUsuario(usuario2);
 
@@ -108,6 +114,14 @@ void main() {
     print('Usuario Restante: ${usuario.nome}, Idade: ${usuario.idade}');
   }
 
+  var usuarioMalicioso =
+      Usuario(nome: "Carlos', 30); DROP TABLE usuarios; --", idade: 30);
+  DatabaseHelper.inserirUsuario(usuarioMalicioso);
+  // Obteer usuários restantes
+  usuariosRestantes = DatabaseHelper.obterUsuarios();
+  for (var usuario in usuariosRestantes) {
+    print('Usuario Restante: ${usuario.nome}, idade: ${usuario.idade}');
+  }
   // Fechar a conexão
   DatabaseHelper.fecharConexao();
 }
